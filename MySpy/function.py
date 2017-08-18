@@ -1,6 +1,11 @@
+#created for function sepration
+# reusablity of code
+
+
 from random import randint,random
 from hashlib import md5
 
+#creating guest user data
 def getGuestInfo():
     string = str(md5(str(random()*10000)).hexdigest())
     string = string[:11]
@@ -16,6 +21,7 @@ def getGuestInfo():
 
     return [name,age,rating];
 
+#getting user input and sending back
 def getUserInfo(string):
         name = raw_input("Provide {} name here : ".format(string))
 

@@ -2,15 +2,18 @@
 def add_status(status):
     from globalDetail import old_status
 
+    #checking previous status
     if(status != None):
         print 'Your current status message is {} \n'.format(status)
 
     else:
         print "You don't have any status message currently\n "
 
+    # want to user choice about the status
     choice = raw_input("Do you want to select from the older status (y/n)? : ")
     if choice =="y" or choice == "Y":
 
+        #showing pervious save status
         for i in range(len(old_status)):
             print "{}. {}".format(i+1,old_status[i])
 
@@ -24,10 +27,11 @@ def add_status(status):
             print 'Your updated status message is: {}'.format(status)
 
     elif choice == "N" or choice == "n":
+        #getting new status
         new_message = raw_input("What status message do you want to set?:\n")
 
         # validating users input.
-        if not new_message.isalpha():
+        if  new_message.isalpha():
             # adding new status message to the list.
             old_status.append(new_message)
             status = new_message
@@ -36,6 +40,7 @@ def add_status(status):
             print "You did not provided any status message. Try again."
 
     else:
+        #wrong input
         print 'The option you chose is not valid! Press either y or n.'
 
     return status;
