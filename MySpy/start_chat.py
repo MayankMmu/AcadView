@@ -1,6 +1,5 @@
-from add_status import add_status
-from globalDetail import status
-
+from add_status import Add_message
+from friends import Friends
 #menu driven console app
 def start_chat():
     while(True):
@@ -17,26 +16,17 @@ def start_chat():
 
         # setting status
         if(choice == 1):
-            global status
-            status=add_status(status)
+            Add_message.add_status()
 
         #making friends
         elif (choice == 2):
-            from function import getUserInfo
-            from SpyClass import Spy
-            from globalDetail import friends
-
-            name,age,rating = getUserInfo("friend")
-            obj = Spy()
-            obj.setDetail(name,age,rating)
-            friends.append(obj)
-            print "You have {} friends".format(len(friends))
+            Friends.add_friend(Friends())
 
 
         elif (choice == 3):
-            pass
+            Friends.send_secret_message()
         elif (choice == 4):
-            pass
+            Friends.read_secret_message()
         elif (choice == 5):
             pass
 

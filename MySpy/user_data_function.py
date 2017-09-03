@@ -4,6 +4,7 @@
 
 from random import randint,random
 from hashlib import md5
+import re
 
 #creating guest user data
 def getGuestInfo():
@@ -23,25 +24,36 @@ def getGuestInfo():
 
 #getting user input and sending back
 def getUserInfo(string):
-        name = raw_input("Provide {} name here : ".format(string))
+        name = raw_input("Provide {} Name here : ".format(string))
 
-        if (not name.isalpha()):
+        if not re.match(r"^[a-zA-Z ]+$",name):
             print "Invalid Name . Provide correct details."
             return None;
 
         salutation = raw_input(" Mr. or Ms.?: :")
-        age = int(raw_input("Enter {} age : ".format(string)))
+        if salutation.capitalize()=="Mr" or salutation.capitalize()=="Ms":
+            salutation = salutation+"."
+        elif salutation.capitalize() == "Mr." or salutation.capitalize() == "Ms.":
+            pass
+        else:
+            print "Enter correct salutation "
+            return None
 
-        if (age <= 12 or age >= 50):
+        age = raw_input("Enter {} Age : ".format(string))
+
+        if not re.match(r"^[2-4]\d|1[2-9]|50$", age):
             print "Invalid age .Provide correct details."
             return None;
+        age = int(age)
 
-        rating = float(raw_input("What {} rating ? : ".format(string)))
+        rating = raw_input("What {} Rating ? : ".format(string))
 
-        if (rating < 0 or rating > 5):
+        if not re.match("^[1-4]\.\d*|[0]\.[1-9]*|5\.0*|[1-5]$",rating) :
             print "Invalid rating .Provide correct details."
             return None;
-
+        rating = float(rating)
+        name = name.capitalize()
+        salutation = salutation.capitalize()
         name = salutation +" "+ name
 
         return [name,age,rating];

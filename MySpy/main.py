@@ -1,8 +1,7 @@
 #importng modules
 
-from function import getGuestInfo , getUserInfo
-from SpyClass import Spy
-from globalDetail import spy,friends
+from user_data_function import getGuestInfo , getUserInfo
+from spy import Spy
 from start_chat import start_chat
 
 # only call by main
@@ -38,7 +37,6 @@ if __name__ == "__main__":
     obj.showDetail()
     print "Proud to have you onboard"
 
-    spy=obj
     # sending to start chat for further execution
     start_chat()
 

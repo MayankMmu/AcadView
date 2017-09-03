@@ -1,5 +1,6 @@
 # creating class to store spy data
 class Spy:
+    spy = None
     def init(self):
         self.name=None
         self.age = None
@@ -12,6 +13,7 @@ class Spy:
         self.age = age
         self.rating = rating
         self.is_online = True
+        Spy.spy = self
 
     # showing data to user
     def showDetail(self):
