@@ -6,7 +6,7 @@ cursor = None
 
 def connect():
     global db, cursor
-    db = MySQLdb.Connect("localhost", "root", "Password", "spychat")
+    db = MySQLdb.Connect("localhost", "root", "Mayank.80", "spychat")
     cursor = db.cursor()
 
 

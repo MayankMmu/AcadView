@@ -43,18 +43,18 @@ def getUserInfo(string):
 
         if not re.match(r"^[2-4]\d|1[2-9]|50$", age):
             print "Invalid age .Provide correct details."
-            return None;
+            return None
         age = int(age)
 
         rating = raw_input("What {} Rating ? : ".format(string))
 
         if not re.match("^[1-4]\.\d*|[0]\.[1-9]*|5\.0*|[1-5]$",rating) :
             print "Invalid rating .Provide correct details."
-            return None;
+            return None
         rating = float(rating)
         name = name.capitalize()
         salutation = salutation.capitalize()
         name = "{0} {1}".format(salutation, name)
 
-        return [name,age,rating];
+        return [name,age,rating]
 

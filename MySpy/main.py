@@ -8,17 +8,18 @@ from register_login import register,login
 # only call by main
 if __name__ == "__main__":
     connect()
-    log = False
-    while not log:
-        print "1.To Register "
-        print "2. To Login"
-        choice = int(raw_input("Enter your choice"))
-        if choice is 1:
-            log = register()
-        elif choice is 2:
-            log = login()
-        else:
-            print "Wrong choice"
+    ("log = False\n"
+     "    while not log:\n"
+     "        print \"1.To Register \"\n"
+     "        print \"2. To Login\"\n"
+     "        choice = int(raw_input(\"Enter your choice\"))\n"
+     "        if choice is 1:\n"
+     "            log = register()\n"
+     "        elif choice is 2:\n"
+     "            log = login()\n"
+     "        else:\n"
+     "            print \"Wrong choice\"\n"
+     "            ")
 
 
 

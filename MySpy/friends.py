@@ -1,6 +1,4 @@
 from spy import Spy
-from steganography.steganography import Steganography
-import re
 
 
 class Friends(Spy):
@@ -40,34 +38,6 @@ class Friends(Spy):
             return None
         return Friends.friends[choice - 1]
 
-    @staticmethod
-    def send_secret_message():
-        friend = Friends.select_a_friend()
-        if friend is None:
-            return
-        message = raw_input("Enter the message\n")
-        if not re.match(r".{1,100}", message):
-            print "Enter the message upto 100 letters"
-        else:
-            Friends.no += 1
-            output_file = "D:\pycharm\Acadview\MySpy\EncreptedImage\Output" + str(Friends.no) + ".jpg"
-
-            Steganography.encode("D:\pycharm\Acadview\MySpy\image\galaxy.jpg", output_file, message)
-            friend.messages.append(output_file)
-
-    @staticmethod
-    def read_secret_message():
-        friend = Friends.select_a_friend()
-        if friend is None:
-            return
-        if len(friend.messages) <= 0:
-            print "No message"
-            return
-        for i in range(len(friend.messages)):
-            print "Message {}".format(i + 1)
-        no = int(raw_input("Enter the Message no. to read"))
-        if no <= 0 or no > len(friend.messages):
-            print "Wrong input"
-            return
-        message = Steganography.decode(friend.messages[no - 1])
-        print "The message is : {}".format(message)
+    @property
+    def get_name(self):
+        return self.name
