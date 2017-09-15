@@ -1,4 +1,6 @@
+from database import insertSpy
 # creating class to store spy data
+
 class Spy:
     spy = None
     def init(self):
@@ -14,6 +16,7 @@ class Spy:
         self.rating = rating
         self.is_online = True
         Spy.spy = self
+        insertSpy(name,age,rating,self.is_online)
 
     # showing data to user
     def showDetail(self):

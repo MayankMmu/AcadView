@@ -3,9 +3,26 @@
 from user_data_function import getGuestInfo , getUserInfo
 from spy import Spy
 from start_chat import start_chat
-
+from database import connect
+from register_login import register,login
 # only call by main
 if __name__ == "__main__":
+    connect()
+    log = False
+    while not log:
+        print "1.To Register "
+        print "2. To Login"
+        choice = int(raw_input("Enter your choice"))
+        if choice is 1:
+            log = register()
+        elif choice is 2:
+            log = login()
+        else:
+            print "Wrong choice"
+
+
+
+
     print "Let's get started"
     #want to know user choice about login
     choice = raw_input('You want to start as guest Y/N : ')

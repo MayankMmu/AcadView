@@ -54,7 +54,7 @@ def getUserInfo(string):
         rating = float(rating)
         name = name.capitalize()
         salutation = salutation.capitalize()
-        name = salutation +" "+ name
+        name = "{0} {1}".format(salutation, name)
 
         return [name,age,rating];
 

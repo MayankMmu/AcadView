@@ -1,5 +1,6 @@
 from add_status import Add_message
 from friends import Friends
+from database import close
 #menu driven console app
 def start_chat():
     while(True):
@@ -32,6 +33,7 @@ def start_chat():
 
         # exiting app
         elif (choice == 6):
+            close()
             exit(0)
         else:
             print "Wrong choice"
