@@ -1,7 +1,7 @@
 from database import register_db, login_db, connect, close
 from re import search, match
 
-
+#checking the password is strong or not
 def get_pass_strength(password):
     # calculate password length
     pass_length = len(password) < 6
@@ -23,6 +23,7 @@ def get_pass_strength(password):
     return password_ok
 
 
+#getting user data
 def get_data():
     name = raw_input("Enter the User name")
     password = raw_input("Enter the password as Pa55W0rd_Must_3e@5tr0ng")
@@ -30,11 +31,11 @@ def get_data():
         print " user name can have alphabet only "
         return
     if not get_pass_strength(password):
-        print "Password don't have uppercase letter or digit or lower case letter or spcial symbol "
+        print "Password must have Uppercase letter, Digit, Lowercase letter And Special symbol "
         return
     return (name, password)
 
-
+#registring the user
 def register():
     data = get_data()
     if data is None:
@@ -43,7 +44,7 @@ def register():
     register_db(data)
     return True
 
-
+#login the user
 def login():
     data = get_data()
     if data is None:
@@ -53,8 +54,3 @@ def login():
     return result
 
 
-if __name__ == "__main__":
-    connect()
-    # register()
-    login()
-    close()

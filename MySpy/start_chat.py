@@ -30,15 +30,19 @@ def start_chat():
         elif choice == 2:
             Friends.add_friend(Friends())
 
+        #showing freinds
         elif choice == 3:
             Friends.show_friends()
 
+        #sending secret message
         elif choice == 4:
             Message().send_secret_message()
 
+        #reading secret message
         elif choice == 5:
             Message.read_secret_message()
 
+        #printing metadata of message
         elif choice == 6:
             Message.get_history()
 
@@ -51,6 +55,3 @@ def start_chat():
             print "Wrong choice"
 
 
-if __name__ == '__main__':
-    connect()
-    start_chat()

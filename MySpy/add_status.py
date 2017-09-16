@@ -27,6 +27,7 @@ class Add_message:
 
             ch = int(raw_input("\nChoose from the above messages. \n"))
 
+            #checking the input is correct
             if ch > len(Add_message.old_status) or ch < 1:
                 print "Invalid choice. Try again."
 

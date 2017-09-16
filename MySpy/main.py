@@ -8,15 +8,22 @@ from register_login import register, login
 
 # only call by main
 if __name__ == "__main__":
+   #connecting data base
     connect()
+
+   #Initialize the login status
     log = False
+
+   #getting the user choice
     while not log:
         print "1.To Register "
         print "2. To Login"
         choice = raw_input("Enter your choice")
         if choice == "1":
+            #register the user
             log = register()
         elif choice == "2":
+            #login user
             log = login()
         else:
             print "Wrong choice"
@@ -36,7 +43,7 @@ if __name__ == "__main__":
     elif choice == "n" or choice == "N":
         choice = raw_input("Are you old user Y/N")
         if choice == "y" or choice =='Y':
-            #getting old user data
+            #getting old user data from database
             info = get_old_user()
         elif choice == "n" or choice == "N":
             # getting user data
