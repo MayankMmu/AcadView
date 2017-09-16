@@ -24,7 +24,7 @@ def register_db(data):
 def login_db(data):
     global cursor, db
     try:
-        sql = "SELECT * FROM login WHERE uname = \"{}\"".format(data[0])
+        sql = "SELECT * FROM login WHERE uname = \"{}\" and pass=\"{}\"".format(data[0], data[1])
         cursor.execute(sql)
         if cursor.rowcount == 1:
             return True
@@ -35,10 +35,9 @@ def login_db(data):
 
 def insertSpy(name, age, rating, isonline):
     global cursor, db
+    if "Guest" in name:
+        return
     try:
-        cursor.execute("DELETE FROM spydata")
-        db.commit()
-
         sql = "INSERT INTO `spychat`.`spydata`(`name`,`age`,`rating`,`isonline`)VALUES(\"{}\",{},{},{})".format(name,
                                                                                                                 age,
                                                                                                                 rating,
@@ -48,11 +47,27 @@ def insertSpy(name, age, rating, isonline):
     except:
         db.rollback()
         print "Sql error"
-        return
+
+
+def getSpy():
+    global cursor, db
+    try:
+        sql = "SELECT * FROM spydata"
+        cursor.execute(sql)
+        result = cursor.fetchall()
+        return result
+
+    except:
+        print "Sql error"
 
 
 def close():
-    global db
+    global db,cursor
+    try:
+        cursor.execute("UPDATE spydata SET isonline={} Where isonline = {}".format(False,True))
+        db.commit()
+    except:
+        db.rollback()
     db.close()
 
 

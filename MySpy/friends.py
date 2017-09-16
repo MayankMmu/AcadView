@@ -11,15 +11,21 @@ class Friends(Spy):
     def add_friend(self):
         from user_data_function import getUserInfo
 
-        name, age, rating = getUserInfo("friend")
+        info = getUserInfo("friend")
+        if info is None:
+            return
+        name, age, rating = info
         self.setDetail(name, age, rating)
         Friends.friends.append(self)
         print "You have {} friends".format(len(Friends.friends))
 
     @staticmethod
     def show_friends():
+        if len(Friends.friends)==0:
+            print "You don't have friends"
+            return
         for friend in Friends.friends:
-            super.showDetail(friend)
+            friend.showDetail()
 
     @staticmethod
     def select_a_friend():

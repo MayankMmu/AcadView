@@ -1,14 +1,17 @@
 import re
+
+
 class Add_message:
 
     status = None
 
     old_status = ["My name is Bond, James Bond", "Shaken, not stirred.", "Keeping the British end up, Sir"]
+
     @staticmethod
     def add_status():
 
         # checking previous status
-        if (Add_message.status != None):
+        if Add_message.status is not None:
             print 'Your current status message is {} \n'.format(Add_message.status)
 
         else:
@@ -36,10 +39,10 @@ class Add_message:
             new_message = raw_input("What status message do you want to set?:\n")
 
             # validating users input.
-            if re.match(r"^.+$",new_message):
+            if re.match(r"^.+$", new_message):
                 # adding new status message to the list.
                 Add_message.old_status.append(new_message)
-               #setting the new sataus message
+                # setting the new sataus message
                 Add_message.status = new_message
                 print 'Your updated status message is: {}'.format(Add_message.status)
             else:
@@ -48,4 +51,3 @@ class Add_message:
         else:
             # wrong input
             print 'The option you chose is not valid! Press either y or n.'
-

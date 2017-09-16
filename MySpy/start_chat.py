@@ -1,7 +1,7 @@
 from add_status import Add_message
 from friends import Friends
 from message import Message
-from database import close,connect
+from database import close, connect
 
 
 # menu driven console app
@@ -10,10 +10,11 @@ def start_chat():
         print """What do you want to do?
         1. Add a status update
         2. Add a friend
-        3. Send a secret message
-        4. Read a secret message 
-        5. Read Chats from a user 
-        6. Close Application \n"""
+        3. show all friends
+        4. Send a secret message
+        5. Read a secret message 
+        6. Read Chats from a user 
+        7. Close Application \n"""
 
         choice = None
         # getting choice of user
@@ -29,23 +30,26 @@ def start_chat():
         elif choice == 2:
             Friends.add_friend(Friends())
 
-
         elif choice == 3:
-            Message().send_secret_message()
+            Friends.show_friends()
 
         elif choice == 4:
-            Message.read_secret_message()
+            Message().send_secret_message()
 
         elif choice == 5:
+            Message.read_secret_message()
+
+        elif choice == 6:
             Message.get_history()
 
         # exiting app
-        elif (choice == 6):
-            close()
-            exit(0)
+        elif choice == 7:
+           close()
+           exit(0)
 
         else:
             print "Wrong choice"
+
 
 if __name__ == '__main__':
     connect()

@@ -7,7 +7,6 @@ from friends import Friends
 
 from termcolor import colored
 
-from colorama import init
 
 class Message:
     def __init__(self):
@@ -26,9 +25,19 @@ class Message:
             return
         while len(self._message) == 0:
             self._message = raw_input("Enter the message\n")
-        if not re.match(r".{1,100}", self._message):
-            print "Enter the message up to 100 letters"
+        if len(self._message) > 100:
+            print "You talk to much .\n From now I am not your friend"
+            Friends.friends.remove(friend)
         else:
+            if self._message.upper() == "SOS":
+                print "I will save you"
+            elif self._message.upper() == "SAVE ME":
+                print "You will be saved"
+            elif self._message.upper() == "HELP":
+                print "I will help "
+            elif self._message.upper() == "HELLO":
+                print "how you doin"
+
             Friends.no += 1
             self.output_file = "D:\pycharm\Acadview\MySpy\EncreptedImage\Output" + str(Friends.no) + ".jpg"
 
@@ -60,8 +69,7 @@ class Message:
         if len(friend.messages) <= 0:
             print "No message"
             return
-        init()
         for data in friend.messages:
-            print colored(data.sendto,"red")
-            print colored(data.time,"blue")
+            print colored(data.sendto, "red")
+            print colored(data.time, "blue")
             print data._message
